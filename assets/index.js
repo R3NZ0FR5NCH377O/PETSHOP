@@ -82,6 +82,7 @@ const optionsVue = {
                     
                   ],
                   modalVisible:false,
+                  modalHVisible:false,
 
                  card: {},              
                   
@@ -99,7 +100,16 @@ const optionsVue = {
                 this.modalVisible = false;
                 this.card = null;
 
-            }
+            },
+             abrirModalHamb(){
+              this.modalHVisible=true;
+
+
+             },
+             cerrarModalHamb (){
+              this.modalHVisible=false;
+             }
+
             
             
 
