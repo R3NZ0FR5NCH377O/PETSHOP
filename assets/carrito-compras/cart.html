@@ -23,39 +23,52 @@
       </nav>
     </header>
     <main class="flex flex-col flex-wrap grow justify-center items-center">
-      <template v-if="localStorageFiltrado.length >0" v-for="articulo in localStorageFiltrado">
-        <div class="flex gap-2 border-2 border-2 border-gray-400 rounded-xl flex-col m-2">
-          <div class="w-full bg-azulOscuro rounded-full py-2">
-          </div>
+      <template v-if="localStorageFiltrado.length > 0" v-for="articulo in localStorageFiltrado">
+        <div v-if="articulo.cantidadEnCarrito > 0" class="flex gap-2 border-2 border-gray-400 rounded-lg flex-col m-2">
+          <div v-if="articulo.categoria == 'jugueteria'" class="w-full bg-green-600 rounded-t-lg py-2 px-1"></div>
+          <div v-else class="w-full bg-red-600 rounded-t-lg py-2 px-1"></div>
           <div class="w-full py-2">
             <article class="flex justify-center items-center flex-col m-2 gap-2">
               <picture class="w-1/4">
                 <img :src="articulo.imagen" :alt="articulo.titulo">
               </picture>
               <h3 class="text-center font-bold">{{articulo.producto}}</h3>
-              <div class="flex border-2 border-gray-400 justify-center">
-                <div class="border border-gray-400 px-3 w-1/6 flex p-1">
-                  <button><img class="self-center" src="../home/Images/minus.png" alt="minus_article"></button>
+              <div class="flex justify-center">
+                <div class="px-3 w-1/6 flex p-1">
+                  <button><img class="self-center" src="../home/Images/minus.png" alt="minus_article" @click="removerDelCarro(articulo,'restar')"></button>
                 </div>
-                <div class="border border-gray-400 px-3 w-4/6 p-1">
-                  <p>{{1}}</p>
+                <div class="border border-gray-400 rounded-full px-3 w-4/6 p-1 text-center">
+                  <p>{{articulo.cantidadEnCarrito}}</p>
                 </div>
-                <div class="border border-gray-400 px-3 w-1/6 flex p-1">
-                  <button type="button"><img class="self-center" src="../home/Images/plus.png" alt="sumar_article"></button>
+                <div class="px-3 w-1/6 flex p-1">
+                  <button type="button"><img class="self-center" src="../home/Images/plus.png" alt="sumar_article" @click="removerDelCarro(articulo, 'sumar')"></button>
                 </div>
               </div>
-              <strong>{{precioTotal}}</strong>
+              <strong>{{totalPorArticulo(articulo)}}</strong>
             </article>
           </div>
         </div>
       </template>
+      <template v-else>
+        <div class="flex justify-center align-center">
+        <strong>TODAVIA NO SE AÑADIO NADA AL CARRITO DE COMPRAS</strong>
+        </div>
+      </template>
+      <div v-if="localStorageFiltrado.length > 0" class="flex flex-col gap-4 border-2 border-gray-400 rounded-xl w-[97%]">
+        <div class="w-full bg-orange-600 py-2 rounded-t-lg"></div>
+        <div class="flex gap-2 justify-center items-center m-2">
+          <strong class="text-xl">TOTAL A PAGAR:</strong>
+          <strong class="text-xl">{{totalCarrito}}</strong>
+        </div>
+        <button class="bg-verdeClaro text-black font-bold p-2 rounded-b-lg" @click="graciasPorSuCompra()">COMPRAR AHORA</button>
+      </div>
     </main>
     <footer class="bg-azulOscuro flex justify-between font-bold text-xl p-2 text-blanco">
       <h2>Cohort N°52</h2>
       <h2>Digital Dynamos</h2>
     </footer>
   </div>
-  <script src="./js/tailwind.config.js"></script>
+  <script src="../home/tailwind.config.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="./js/cart.js"></script>
 </body>

@@ -5,7 +5,7 @@ const options = {
     return{
       articulos: [],
       articuloFiltrado:[],
-      categoria:'jugueteria',
+      categoria:'farmacia',
       sort:[],
       filtroPrecio:"none",
       filtroNombre:"",

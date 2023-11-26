@@ -17,28 +17,88 @@ const options = {
       .then(data => {
         this.articulos = data
         this.localStorageCart = JSON.parse(localStorage.getItem('carrito')) || []
-        this.localStorageFiltrado = this.articulos.filter(articulo => this.localStorageCart.some(storage => storage.id === articulo._id))
+        // Filtra los artículos que estan en el carrito
+        this.localStorageFiltrado = this.articulos.filter(articulo =>
+        this.localStorageCart.some(storage => storage.id === articulo._id))
+        // Agrega la cantidad del carrito a cada artículo filtrado
+        this.localStorageFiltrado.forEach(articuloFiltrado => {
+          const cantidadEnCarrito = this.localStorageCart.find(storage => storage.id === articuloFiltrado._id)
+          if (cantidadEnCarrito) {
+            articuloFiltrado.cantidadEnCarrito = cantidadEnCarrito.cantidad
+          }
+        })
         console.log(this.localStorageFiltrado)
-        console.log(this.localStorageFiltrado[0].precio)
       })
       .catch(error => console.log(error))
     },//finaliza beforeCreate
-    computed:{
-      precioTotal(){
-        return (this.localStorageFiltrado.precio * 2)
-      }
-    },//aca finaliza el computed
     methods: {
-    removerDelCarro(articulo){
-      let storageCarrito = JSON.parse(localStorage.getItem('carrito')) || []
-      const carrito = storageCarrito.some( item => item.id === articulo._id)
-      if(carrito){
-        storageCarrito = storageCarrito.filter(item => item.id !== articulo._id)
-      }
-      localStorage.setItem('carrito', JSON.stringify(storageCarrito))
-      this.localStorageCart = storageCarrito
-    }, // finaliza AgregarAlCarro
-    },
+      removerDelCarro(articulo, accion) {
+        let storageCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const index = storageCarrito.findIndex(item => item.id === articulo._id);
+    
+        if (accion === 'restar') {
+          this.restar(articulo);
+        } else if (accion === 'sumar') {
+          this.sumar(articulo);
+        }
+    
+        // Actualiza la cantidad en el localStorage
+        if (index !== -1) {
+          storageCarrito[index].cantidad = articulo.cantidadEnCarrito;
+    
+          // Elimina el elemento si la cantidad es cero
+          if (articulo.cantidadEnCarrito === 0) {
+            storageCarrito.splice(index, 1);
+          }
+        } else if (articulo.cantidadEnCarrito > 0) {
+          // Agrega el elemento solo si la cantidad es mayor a cero
+          storageCarrito.push({ id: articulo._id, cantidad: articulo.cantidadEnCarrito });
+        }
+        localStorage.setItem('carrito', JSON.stringify(storageCarrito));
+        this.localStorage = storageCarrito
+      }, //aca termina removerDelCarro
+      totalPorArticulo(articulo) {
+        let total = articulo.cantidadEnCarrito * articulo.precio
+        return this.dotsNumbers(total)
+      }, // finaliza totalPorArticulo
+      restar(articulo) {
+        if (articulo.cantidadEnCarrito > 0) {
+          articulo.cantidadEnCarrito--
+        }
+      },//finaliza restar
+      sumar(articulo) {
+        if (articulo.cantidadEnCarrito < articulo.disponibles) {
+          articulo.cantidadEnCarrito++
+        }
+      },// finaliza sumar
+      dotsNumbers(number){
+        // se verifica que los datos sean distinto de undefined y null
+        // luego se usa el metodo toLocaleString que convierte
+        // un string segun la region establecida, se le da
+        // el stylo de moneda y se selecciona USD como moneda
+        //ademas se establece que no debe mostrar numeros fraccionados.
+        if(number !== undefined && number !== null){
+          return number.toLocaleString("es-MX",{
+            style: "currency",
+            currency: "ARS",
+            minimumFractingDigits: 0,
+          })
+        }
+      },//fin del dotsNumbers
+      graciasPorSuCompra(){
+        alert("gracias por su compra")
+      }, //finaliza graciasporsucompra
+    },//finaliza methods
+    computed: {
+      totalCarrito() {
+        let total = 0
+        for (let i = 0; i < this.localStorageFiltrado.length; i++) {
+          const articulo = this.localStorageFiltrado[i]
+          total += articulo.cantidadEnCarrito * articulo.precio
+        }
+        return this.dotsNumbers(total)
+      }, //aca finaliza totalCarrito
+    },//aca finaliza el computed
 }//finalizacion de options
 
 const app = createApp(options)

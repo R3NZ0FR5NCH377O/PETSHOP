@@ -10,18 +10,18 @@
   <div id="app" class="flex flex-col h-screen w-full">
     <header class="bg-azulOscuro none flex flex-col items-center pb-3">
       <picture class="w-28 flex flex-col mb-3">
-        <img class="w-full" src="./assets/img/Paw.png" alt="Only Paws logo">
-        <img class="w-32 absolute left-[50%] translate-x-[-50%] top-24 items-center " src="./assets/img/Only_Paws.png" alt="Only Paws text">
+        <img class="w-full" src="../home/Images/Paw.png" alt="Only Paws logo">
+        <img class="w-32 absolute left-[50%] translate-x-[-50%] top-24 items-center " src="../home/Images/OnlyPaws.png" alt="Only Paws text">
       </picture>
       <picture>
-        <a href="../carrito-compras/cart.html"><img src="./assets/img/shopping.png" alt="" class="absolute top-[8%] left-[80%] z-index-50 w-14 md:top-[3%] md:left-[65%]"></a>
+        <a href="../carrito-compras/cart.html"><img src="../home/Images/Cart.png" alt="" class="absolute top-[8%] left-[80%] z-index-50 w-14 md:top-[3%] md:left-[65%]"></a>
       </picture>
       <nav class="md:w-full">
         <ul class="flex flex-col md:flex-row text-blanco gap-3 items-center md:justify-evenly">
-          <li><a href="#">INICIO</a></li>
+          <li><a href="../../index.html">INICIO</a></li>
           <li><a class="bg-azulClaro px-6 font-bold rounded-full md:p-2" href="#">JUGUETERIA</a></li>
-          <li><a href="#">FARMACIA</a></li>
-          <li><a href="#">CONTACTO</a></li>
+          <li><a href="../farmacia/farmacia.html">FARMACIA</a></li>
+          <li><a href="../contacto/contacto.html">CONTACTO</a></li>
         </ul>
       </nav>
     </header>
@@ -55,7 +55,7 @@
             </div>
             <div class="flex gap-4 justify-evenly">
               <button class="bg-azulClaro text-blanco py-1 px-2 self-center mb-2 font-semibold lg:text-xs" type="button" v-on:click="showModal(articulo)">DETALLES</button>
-              <button class="bg-verdeClaro text-black py-1 px-2 self-center mb-2 font-semibold lg:text-xs" type="button" @click="agregarAlCarro(articulo)">AÑADIR AL CARRITO</button>
+              <button v-if="articulo.disponibles >= 1" class="bg-verdeClaro text-black py-1 px-2 self-center mb-2 font-semibold lg:text-xs" type="button" @click="agregarAlCarro(articulo)">AÑADIR AL CARRITO</button>
             </div>
           </article>
         </template>
@@ -85,7 +85,7 @@
       </section>
     </div>
   </div>
-  <script src="./assets/js/tailwind.config.js"></script>
+  <script src="../home/tailwind.config.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="./assets/js/jugueteria.js"></script>
 </body>
