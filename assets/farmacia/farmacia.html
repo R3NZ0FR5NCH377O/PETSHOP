@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="../Images/Paw.png" type="image/x-icon">
   <title>Only Paws | Farmacia</title>
 </head>
-<body class="bg-gray-200" v-if="modalVisible">
+<body class="bg-gray-200 overflow-y-scroll no-scrollbar" v-if="modalVisible">
   <div id="app" class="flex flex-col h-screen w-full">
     <header class="gradient w-full bg-azulOscuro p-6 flex  items-center justify-between place-content-center md:flex-row lg:flex-row top-0 sticky z-10">
       <div class="flex h-14 align-center gap-4 items-center">
@@ -127,6 +127,10 @@
       </section>
     </div>
   </div>
+  <footer class="bg-azulOscuro flex justify-between font-bold text-xl p-2 text-blanco w-full">
+    <h2>Cohort N°52</h2>
+    <h2>Digital Dynamos</h2>
+  </footer>
   <script src="../tailwind.config.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="./js/farmacia.js"></script>
