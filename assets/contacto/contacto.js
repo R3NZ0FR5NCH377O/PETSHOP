@@ -1,22 +1,22 @@
-const {createApp} = Vue
+const { createApp } = Vue
 const optionsVue = {
-        data (){
-             return {             
-                   modalHVisible:false,                        
-            }
-        },
-
-        methods:{         
-            },
-             abrirModalHamb(){
-              this.modalHVisible=true;
-             },
-
-             cerrarModalHamb (){
-              this.modalHVisible=false;
-             }                   
+    data() {
+        return {
+            modalHVisible: false,
         }
+    },
 
-        
-const app = createApp (optionsVue)
+    methods: {
+    },
+    abrirModalHamb() {
+        this.modalHVisible = true;
+    },
+
+    cerrarModalHamb() {
+        this.modalHVisible = false;
+    }
+}
+
+
+const app = createApp(optionsVue)
 app.mount('#app')

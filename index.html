@@ -1,129 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/index.css">
     <link rel="shortcut icon" href="assets/Images/Paw.png" type="image/x-icon">
-    <title>Only Paws</title>
+    <title>Only Paws | Home</title>
 </head>
+
 <body class="flex flex-col w-screen relative">
     <div id="app">
-        <header class="gradient w-full bg-azulOscuro  flex  items-center px-4 justify-between place-content-center md:flex-row w-full lg:flex-row w-[100%] p-4 sticky top-0">
+        <header
+            class="gradient w-full bg-azulOscuro  flex  items-center px-4 justify-between place-content-center md:flex-row w-full lg:flex-row w-[100%] p-4 sticky top-0">
             <div class="flex h-14 align-center gap-4 items-center">
-                <img src="assets/Images/Paw.png" alt=""class="flex h-12" >
-                <img src="assets/Images/OnlyPaws.png" alt=""class="flex h-6">
+                <img src="assets/Images/Paw.png" alt="" class="flex h-12">
+                <img src="assets/Images/OnlyPaws.png" alt="" class="flex h-6">
             </div>
             <div id="menuHamburguesa">
-                <img src="assets/Images/menuHamb.png" alt="" class="flex w-8 md:hidden lg:hidden" v-on:click="abrirModalHamb()">
+                <img src="assets/Images/menuHamb.png" alt="" class="flex w-8 md:hidden lg:hidden"
+                    v-on:click="abrirModalHamb()">
             </div>
-            <nav class="text-white hidden relative text-center items-center md:flex  gap-2 lg:flex  gap-4 text-xl p-2 font-semibold " >
-                <a href="#" class="border-b-2" >Home</a>
-                <a href="./assets/contacto/contacto.html" class="hover:border-b-2">Contacto</a>
+            <nav
+                class="text-white hidden relative text-center items-center md:flex  gap-2 lg:flex  gap-4 text-xl p-2 font-semibold ">
+                <a href="#" class="border-b-2">Home</a>
                 <a href="./assets/jugueteria/jugueteria.html" class="hover:border-b-2">Jugueteria</a>
                 <a href="./assets/farmacia/farmacia.html" class="hover:border-b-2">Farmacia</a>
-                <a href="./assets/carrito-compras/cart.html" class="h-8 items-center flex justify-center w-8 bg-black/20 p-2 rounded-[10rem] relative"> <img src="assets/Images/Cart.png" alt="" class="object-cover h-4 absolute top-50 rigth-50"></a>
+                <a href="./assets/contacto/contacto.html" class="hover:border-b-2">Contacto</a>
+                <a href="#" class="h-8 items-center flex justify-center w-8 bg-black/20 p-2 rounded-[10rem] relative">
+                    <img src="assets/Images/Cart.png" alt="" class="object-cover h-4 absolute top-50 rigth-50"></a>
             </nav>
         </header>
-        <div v-if="modalHVisible" class="gradient w-[50%] h-[40%] z-10 bg-azulClaro fixed top-0 right-0 rounded-xl">
-            <nav class="text-white text-lg flex flex-col text-center items-center gap-4 py-6" >
-                <a href="#" class="border-b-2" >Home</a>
-                <a href="./assets/contacto/contacto.html" class="">Contacto</a>
-                <a href="./assets/jugueteria/jugueteria.html" class="">Jugueteria</a>
-                <a href="./assets/farmacia/farmacia.html" class="">Farmacia</a>
-                <a href="./assets/carrito-compras/cart.html" class="h-10 w-10 items-center flex justify-center w-10 bg-black/20 p-2 rounded-[10rem] relative"> <img src="assets/Images/Cart.png" alt="" class="object-cover h-4 absolute top-50 rigth-50"></a>
+        <div v-if="modalHVisible" class="gradient w-[200px] h-[250px] z-10 bg-azulClaro fixed top-0 right-0 rounded-xl">
+            <nav class="text-white text-lg flex flex-col text-center items-center gap-4 py-6">
+                <a href="#" class="border-b-2 font-bold text-xl">Home</a>
+                <a href="./assets/jugueteria/jugueteria.html" class="hover:border-b-2 text-xl">Jugueteria</a>
+                <a href="./assets/farmacia/farmacia.html" class="hover:border-b-2 text-xl">Farmacia</a>
+                <a href="./assets/contacto/contacto.html" class="hover:border-b-2 text-xl">Contacto</a>
+                <a href="#"
+                    class="h-10 w-10 items-center flex justify-center w-10 bg-black/20 p-2 rounded-[10rem] relative">
+                    <img src="assets/Images/Cart.png" alt="" class="object-cover h-4 absolute top-50 rigth-50"></a>
             </nav>
-            <img src="assets/Images/hambClose.png" alt="" class="w-6 absolute top-2 left-2" v-on:click="cerrarModalHamb()">
-            
+            <img src="./assets/Images/hambClose.png" alt="" class="w-6 absolute top-2 right-2"
+                v-on:click="cerrarModalHamb()">
+
         </div>
 
         <main>
             <div id="banner">
-                <img src="assets/Images/Banner.png" alt="" class="flex w-full mb-20">
+                <img src="./assets/Images/Banner.png" alt="" class="flex w-full mb-20">
             </div>
-            
-           
-            <section id="textContainer" class="bg-white flex flex-col shadow-2xl w-[90%] gap-20 text-azulOscuro mx-0 mb-32 lg:px-6 ">
-               <article class="flex flex-col items-center py-6 gap-6 justify-between md:flex-row lg:flex-row " >
-                <div class="flex w-[90%] flex flex-col gap-8 ">
-                    <h1 class="text-azulClaro text-3xl font-bold text-center">Bienvenido a Only Paws: el paraíso para tus mascotas!</h1>
-                    <p class="text-azulOscuro font-medium text-xl text-center  lg:text-2xl"> 
-                        Mucho más que una tienda para mascotas, somos tu destino definitivo para el bienestar y la felicidad de tus compañeros peludos.  Ofrecemos una amplia gama de productos y servicios para satisfacer todas sus necesidades, desde alimentos de calidad hasta accesorios divertidos. Nuestro equipo está comprometido a brindar atención experta y cuidado dedicado a cada animal que cruza nuestras puertas. 
-                    </p>
-               </div>
-               <img src="assets/Images/logoMockup.png" alt="" class="  w-[90%] mr-4 md:w-[30%]">
+
+            <section id="textContainer"
+
+                class="bg-white flex flex-col shadow-2xl w-[90%] gap-20 text-azulOscuro mx-0 mb-32 lg:px-6 ">
+                <article class="flex flex-col items-center py-6 gap-6 justify-between md:flex-row lg:flex-row ">
+                    <div class="flex w-[90%] flex flex-col gap-8 ">
+                        <h1 class="text-azulClaro text-3xl font-bold text-center">Bienvenido a Only Paws: el paraíso
+                            para tus mascotas!</h1>
+                        <p class="text-azulOscuro font-medium text-xl text-center  lg:text-2xl">
+                            Mucho más que una tienda para mascotas, somos tu destino definitivo para el bienestar y la
+                            felicidad de tus compañeros peludos. Ofrecemos una amplia gama de productos y servicios para
+                            satisfacer todas sus necesidades, desde alimentos de calidad hasta accesorios divertidos.
+                            Nuestro equipo está comprometido a brindar atención experta y cuidado dedicado a cada animal
+                            que cruza nuestras puertas.
+                        </p>
+                    </div>
+                    <img src="./assets/Images/logoMockup.png" alt="" class="  w-[90%] mr-4 md:w-[30%]">
                 </article>
 
-               <article class="flex flex-col gap-4 lg:px-6">
-                <h1 class=" font-bold text-azulClaro text-center md:text-3xl lg:text-3xl">¿Qué nos hace especiales?</h1>
-                <div class="flex  items-center gap-6 mt-6 flex-col md:flex-row lg:flex-row ">
-                    <div class="flex flex-col ">
-                    <h1 class="text-md font-bold md:text-xl lg:text-xl">Variedad y Calidad:</h1> 
-                    <p class="md:text-xl">Desde los alimentos más nutritivos hasta juguetes entretenidos, en Only Paws encontrarás una amplia gama de productos cuidadosamente seleccionados para satisfacer todas las necesidades de tus mascotas. Nos esforzamos por ofrecer solo lo mejor.</p>
+                <article class="flex flex-col gap-4 lg:px-6">
+                    <h1 class=" font-bold text-azulClaro text-center md:text-3xl lg:text-3xl">¿Qué nos hace especiales?
+                    </h1>
+                    <div class="flex  items-center gap-6 mt-6 flex-col md:flex-row lg:flex-row ">
+                        <div class="flex flex-col ">
+                            <h1 class="text-md font-bold md:text-xl lg:text-xl">Variedad y Calidad:</h1>
+                            <p class="md:text-xl">Desde los alimentos más nutritivos hasta juguetes entretenidos, en
+                                Only Paws encontrarás una amplia gama de productos cuidadosamente seleccionados para
+                                satisfacer todas las necesidades de tus mascotas. Nos esforzamos por ofrecer solo lo
+                                mejor.</p>
+                        </div>
+                        <img src="./assets/Images/ilustracion1.png" alt="" class="w-36">
                     </div>
-                    <img src="assets/Images/ilustracion1.png" alt="" class="w-36">
-                </div>
-                <div class="flex gap-6 items-center flex-col md:flex-row lg:flex-row">
-                    <img src="assets/Images/ilustracion2.png" alt="" class="w-44">
-                    <div class="flex flex-col">
-                    <h1 class="text-md font-bold md:text-xl">Atención Personalizada:</h1> 
-                    <p class="md:text-xl">Nuestro equipo está compuesto por amantes de los animales que están aquí para ayudarte. Brindamos asesoramiento experto y recomendaciones personalizadas para garantizar que encuentres exactamente lo que tu mascota necesita.</p>
+                    <div class="flex gap-6 items-center flex-col md:flex-row lg:flex-row">
+                        <img src="./assets/Images/ilustracion2.png" alt="" class="w-44">
+                        <div class="flex flex-col">
+                            <h1 class="text-md font-bold md:text-xl">Atención Personalizada:</h1>
+                            <p class="md:text-xl">Nuestro equipo está compuesto por amantes de los animales que están
+                                aquí para ayudarte. Brindamos asesoramiento experto y recomendaciones personalizadas
+                                para garantizar que encuentres exactamente lo que tu mascota necesita.</p>
+                        </div>
                     </div>
-                    
-                </div>
-                <div class="flex gap-6 items-center flex-col md:flex-row lg:flex-row">
-                    <div class="flex flex-col">
-                    <h1 class="text-md font-bold md:text-xl">Experiencia y Conocimiento: </h1> 
-                    <p class="md:text-xl">Con años de experiencia en el cuidado animal, estamos equipados con el conocimiento necesario para asistirte en cada paso. Desde nutrición hasta cuidado de la salud, estamos aquí para ser tu guía confiable.</p>
+                    <div class="flex gap-6 items-center flex-col md:flex-row lg:flex-row">
+                        <div class="flex flex-col">
+                            <h1 class="text-md font-bold md:text-xl">Experiencia y Conocimiento: </h1>
+                            <p class="md:text-xl">Con años de experiencia en el cuidado animal, estamos equipados con el
+                                conocimiento necesario para asistirte en cada paso. Desde nutrición hasta cuidado de la
+                                salud, estamos aquí para ser tu guía confiable.</p>
+                        </div>
+                        <img src="./assets/Images/ilustracion3.png" alt="" class="w-36">
                     </div>
-                    <img src="assets/Images/ilustracion3.png" alt="" class="w-36">
-                </div>
-               </article>
-               
+                </article>
+
             </section>
 
-            <section id="galeria" class=" flex flex-col mt-4  items-center  " >
-                <h1 class="font-bold text-2xl text-azulClaro text-center mb-16">Conoce las opiniones de nuestros clientes:</h1>
+            <section id="galeria" class=" flex flex-col mt-4  items-center  ">
+                <h1 class="font-bold text-2xl text-azulClaro text-center mb-16">Conoce las opiniones de nuestros
+                    clientes:</h1>
                 <article class="scrollmenu w-[90%]  h-48 gap-4">
-                    <template v-for="card of cards"  class="galery shadow-lg" >
-                        <div class="galery shadow-lg w-44 h-44 "   v-on:click="abrirModal(card)">
+                    <template v-for="card of cards" class="galery shadow-lg">
+                        <div class="galery shadow-lg w-44 h-44 " v-on:click="abrirModal(card)">
                             <img v-bind:src="card.image" alt="" class="galeryImg ">
                             <h1 class="text-azulOscuro font-semibold">{{card.name}} </h1>
                         </div>
-
                     </template>
-                </article>      
-                               
+                </article>
             </section>
 
             <section id="callsContainer" class="flex flex-col justify-center gap-20 my-20 ">
                 <h1 class="font-bold text-2xl text-azulClaro text-center">Encontra todo lo que buscas y más en:</h1>
                 <div class="flex justify-center flex-col items-center gap-20 m-4 md:flex-row lg:flex-row">
                     <a href="#" class="icon hover:shadow-2xl">
-                        <div  >
+                        <div>
                             <h1 class="text-3xl font-semibold text-azulClaro mb-6">Juguetería</h1>
-                            <img src="assets/Images/toysIcon.png" alt="" class="w-48">
+                            <img src="./assets/Images/toysIcon.png" alt="" class="w-48">
                         </div>
                     </a>
-                    <a href="#" class="icon hover:shadow-2xl" >
-                        <div >
+                    <a href="#" class="icon hover:shadow-2xl">
+                        <div>
                             <h1 class="text-3xl font-semibold text-azulClaro mb-6">Farmacia</h1>
-                            <img  src="assets/Images/medsIcon.png" alt="" class="w-48">
+                            <img src="./assets/Images/medsIcon.png" alt="" class="w-48">
                         </div>
                     </a>
-
                 </div>
-               
             </section>
+
         </main>
         <footer class="bg-azulOscuro flex h-24 w-[100vw]">
-            
-            
         </footer>
 
-        <div v-if="modalVisible"  class="bg-black/60 h-screen fixed inset-0 z-10 flex justify-center items-center ">
-            <div class="w-[90%] h-[20rem] bg-white rounded-2xl relative flex  p-4 gap-4 md:w-[70%] h-[15rem] lg:w-[40%] gap-6">
+        <div v-if="modalVisible" class="bg-black/60 h-screen fixed inset-0 z-10 flex justify-center items-center ">
+            <div
+                class="w-[90%] h-[20rem] bg-white rounded-2xl relative flex  p-4 gap-4 md:w-[70%] h-[15rem] lg:w-[40%] gap-6">
                 <div class="w-[40%] h-[90%] self-center rounded-xl flex">
                     <img v-bind:src="card.image" alt="" class="rounded-xl object-cover shadow-xl">
                 </div>
@@ -132,20 +151,11 @@
                     <img v-bind:src="card.rate" alt="" class="w-20">
                     <h2 class="text-sm font-semibold text-slate-400">{{card.fecha}} </h2>
                     <p class="text-xs flex flex-wrap text-azulOscuro italic lg:text-[1rem] p-2 "> "{{card.review}}" </p>
-                    
-
                 </div>
-                
-                <img src="https://png.pngtree.com/png-vector/20190603/ourmid/pngtree-icon-close-button-png-image_1357822.jpg" class="w-8 h-8  cursor-pointer absolute top-2 right-2" alt="" v-on:click="cerrarModal()">
-                
-
+                <img src="https://png.pngtree.com/png-vector/20190603/ourmid/pngtree-icon-close-button-png-image_1357822.jpg"
+                    class="w-8 h-8  cursor-pointer absolute top-2 right-2" alt="" v-on:click="cerrarModal()">
             </div>
-            
         </div>
-
-    
-
-
 
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -153,18 +163,3 @@
     <script src="assets/tailwind.config.js"></script>
 </body>
 </html>
-
-
-
-<!-- 
-Encuentra a tu Compañero Perfecto
-Descubre un Amigo Único: Al adoptar, encuentras un compañero que se convierte en una parte invaluable de tu vida. No solo ganas un amigo peludo, ¡sino que también descubres un mundo de amor incondicional y momentos inolvidables juntos!
-Haz una Diferencia Real
-Cambia una Vida: Al adoptar, marcas una gran diferencia. Das la oportunidad a un animalito de tener un hogar lleno de amor y cuidado. ¡Es un cambio real que toca el corazón y transforma vidas!
-Llena tu Vida de Alegría
-Felicidad Diaria: La sonrisa que tu mascota trae a tu vida es inigualable. Cada día se llena de risas, amor desbordante y aventuras. Adoptar no solo transforma su vida, ¡sino que también llena la tuya de alegría!
-Adoptar una mascota no solo es llevar a casa a un nuevo integrante, ¡es dar la bienvenida a un mundo lleno de amor y complicidad! Es una experiencia que no solo te hará sonreír, sino que también te llenará el corazón de amor incondicional. -->
-
-
-
- 
