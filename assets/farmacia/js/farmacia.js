@@ -20,6 +20,7 @@ const options = {
       },
       localStorage: [],
       modalHVisible: false,
+      modalVisibleAlert:false,
     }
   },
 
@@ -118,6 +119,38 @@ const options = {
         })
       }
     },//fin del dotsNumbers
+    agregarAlCarroModal(articulo) {
+      let storageCarrito = JSON.parse(localStorage.getItem('carrito')) || []
+      const index = storageCarrito.findIndex(item => item.id === articulo._id)
+      if (index !== -1) {
+        if (storageCarrito[index].cantidad + 1 > articulo.disponibles) {
+          alert("Se excedió el límite de stock para este artículo")
+          return; // No agrega más al carrito si excede el límite
+        }
+        storageCarrito[index].cantidad++
+      } else {
+        if (1 > articulo.disponibles) {
+          alert("Se excedió el límite de stock para este artículo")
+          return; // No agrega al carrito si excede el límite
+        }
+        storageCarrito.push({ id: articulo._id, cantidad: 1 })
+      }
+      localStorage.setItem('carrito', JSON.stringify(storageCarrito))
+      this.localStorage = storageCarrito
+      this.abrirAlert()
+    }, // finaliza AgregarAlCarro
+    abrirAlert() {
+      this.modalVisibleAlert = true
+      if (this.modalVisibleAlert) {
+        document.body.classList.add('overflow-y-hidden')
+      }
+    }, // finaliza showModal
+    cerrarAlert() {
+      this.modalVisibleAlert = false
+      if (this.modalVisibleAlert == false) {
+        document.body.classList.remove('overflow-y-hidden')
+      }
+    },// finaliza cerrarModal
   },//aca finaliza methods
   computed: {
     ponePuntitos() {
