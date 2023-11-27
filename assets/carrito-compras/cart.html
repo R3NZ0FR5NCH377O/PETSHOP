@@ -64,7 +64,7 @@
                           <p v-else>{{articulo.cantidadEnCarrito}}</p>
                         </div>
                         <div class="w-1/6">
-                          <button type="button"><img src="../Images/plus.png" alt="sumar_article" class="object-cover"
+                          <button  :disabled ="articulo.cantidadEnCarrito >= articulo.disponibles" type="button"><img src="../Images/plus.png" alt="sumar_article" class="object-cover"
                               @click="removerDelCarro(articulo, 'sumar')"></button>
                         </div>
                       </div>
