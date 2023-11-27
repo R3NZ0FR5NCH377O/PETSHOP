@@ -45,13 +45,10 @@
             <div v-if="articulo.categoria == 'jugueteria'" class="w-full bg-green-600 rounded-t-lg py-2 px-1"></div>
             <div v-else class="w-full  rounded-t-lg py-2 px-1"></div>
             <div class="w-full py-2">
-              
               <article class="flex justify-between items-center  m-2 gap-8">
                 <picture class="w-[20rem]">
                   <img :src="articulo.imagen" :alt="articulo.titulo">
                 </picture>
-                
-                
                 <div class="flex justify-around flex-col gap-2">
                   <h3 class="text-center font-bold">{{articulo.producto}}</h3>
                   <div class="flex -16">
