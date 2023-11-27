@@ -3,65 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../index.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>Document</title>
+  <title>Carrito de compras</title>
 </head>
 <body class="bg-gray-200">
   <div id="app" class="flex flex-col h-screen w-full">
-    <header class="bg-azulOscuro none flex flex-col items-center pb-3">
-      <picture class="w-28 flex flex-col mb-3">
-        <img class="w-full" src="../home/Images/Paw.png" alt="Only Paws logo">
-        <img class="w-32 absolute left-[50%] translate-x-[-50%] top-24 items-center " src="../home/Images/OnlyPaws.png" alt="Only Paws text">
-      </picture>
-      <nav class="md:w-full">
-        <ul class="flex flex-col md:flex-row text-blanco gap-3 items-center md:justify-evenly">
-          <li><a href="../../index.html">INICIO</a></li>
-          <li><a href="../jugueteria/jugueteria.html">JUGUETERIA</a></li>
-          <li><a href="../farmacia/farmacia.html">FARMACIA</a></li>
-          <li><a href="../contacto/contacto.html">CONTACTO</a></li>
-        </ul>
-      </nav>
+    <div id="app">
+      <header class="gradient w-full bg-azulOscuro  flex  items-center px-4 justify-between place-content-center md:flex-row w-full lg:flex-row w-[100%] p-4 sticky top-0 z-10">
+        <div class="flex h-14 align-center gap-4 items-center">
+            <img src="../Images/Paw.png" alt=""class="flex h-12" >
+            <img src="../Images/OnlyPaws.png" alt=""class="flex h-6">
+        </div>
+        <div id="menuHamburguesa">
+            <img src="../Images/menuHamb.png" alt="" class="flex w-8 md:hidden lg:hidden" v-on:click="abrirModalHamb()">
+        </div>
+        <nav class="text-white hidden relative text-center items-center md:flex  gap-2 lg:flex  gap-4 text-xl p-2 font-semibold " >
+            <a href="#" class="border-b-2" >Home</a>
+            <a href="#" class="hover:border-b-2">Contacto</a>
+            <a href="#" class="hover:border-b-2">Jugueteria</a>
+            <a href="#" class="hover:border-b-2">Farmacia</a>
+            <a href="#" class="h-8 items-center flex justify-center w-8 bg-black/20 p-2 rounded-[10rem] relative"> <img src="../Images/Cart.png" alt="" class="object-cover h-4 absolute top-50 rigth-50"></a>
+        </nav>
     </header>
-    <main class="flex flex-col flex-wrap grow justify-center items-center">
-      <template v-if="localStorageFiltrado.length > 0" v-for="articulo in localStorageFiltrado">
-        <div v-if="articulo.cantidadEnCarrito > 0" class="flex gap-2 border-2 border-gray-400 rounded-lg flex-col m-2">
-          <div v-if="articulo.categoria == 'jugueteria'" class="w-full bg-green-600 rounded-t-lg py-2 px-1"></div>
-          <div v-else class="w-full bg-red-600 rounded-t-lg py-2 px-1"></div>
-          <div class="w-full py-2">
-            <article class="flex justify-center items-center flex-col m-2 gap-2">
-              <picture class="w-1/4">
-                <img :src="articulo.imagen" :alt="articulo.titulo">
-              </picture>
-              <h3 class="text-center font-bold">{{articulo.producto}}</h3>
-              <div class="flex justify-center">
-                <div class="px-3 w-1/6 flex p-1">
-                  <button><img class="self-center" src="../home/Images/minus.png" alt="minus_article" @click="removerDelCarro(articulo,'restar')"></button>
+    <div v-if="modalHVisible" class="gradient w-[50%] h-[40%] z-10 bg-azulClaro fixed top-0 right-0 rounded-xl">
+        <nav class="text-white text-lg flex flex-col text-center items-center gap-4 py-6" >
+            <a href="#" class="border-b-2" >Home</a>
+            <a href="#" class="">Contacto</a>
+            <a href="#" class="">Jugueteria</a>
+            <a href="#" class="">Farmacia</a>
+            <a href="#" class="h-10 w-10 items-center flex justify-center w-10 bg-black/20 p-2 rounded-[10rem] relative"> <img src="../Images/Cart.png" alt="" class="object-cover h-4 absolute top-50 rigth-50"></a>
+        </nav>
+        <img src="../Images/hambClose.png" alt="" class="w-6 absolute top-2 left-2" v-on:click="cerrarModalHamb()">
+        
+    </div>
+    <main class="flex flex-wrap  justify-center items-center">
+
+      <section class="w-3/5 flex justify-center">
+        <template v-if="localStorageFiltrado.length > 0" v-for="articulo in localStorageFiltrado">
+          <div v-if="articulo.cantidadEnCarrito > 0" class="flex gap-2  bg-white shadow-xl rounded-lg  m-2 w-[90%] justify-around">
+            <div v-if="articulo.categoria == 'jugueteria'" class="w-full bg-green-600 rounded-t-lg py-2 px-1"></div>
+            <div v-else class="w-full  rounded-t-lg py-2 px-1"></div>
+            <div class="w-full py-2">
+              
+              <article class="flex justify-between items-center  m-2 gap-8">
+                <picture class="w-[20rem]">
+                  <img :src="articulo.imagen" :alt="articulo.titulo">
+                </picture>
+                
+                
+                <div class="flex justify-around flex-col gap-2">
+                  <h3 class="text-center font-bold">{{articulo.producto}}</h3>
+                  <div class="flex -16">
+                    <div class="px-3 w-1/6 flex  p-1">
+                      <button><img class="self-center" src="../home/Images/minus.png" alt="minus_article" @click="removerDelCarro(articulo,'restar')"></button>
+                    </div>
+                    <div class="border border-gray-400 rounded-full px-3 w-4/6 p-1 h-8 text-center">
+                      <p>{{articulo.cantidadEnCarrito}}</p>
+                    </div>
+                    <div class="px-3 w-1/6 flex p-1">
+                      <button type="button"><img class="self-center" src="../home/Images/plus.png" alt="sumar_article" @click="removerDelCarro(articulo, 'sumar')"></button>
+                    </div>
+                  </div>
+                  
                 </div>
-                <div class="border border-gray-400 rounded-full px-3 w-4/6 p-1 text-center">
-                  <p>{{articulo.cantidadEnCarrito}}</p>
-                </div>
-                <div class="px-3 w-1/6 flex p-1">
-                  <button type="button"><img class="self-center" src="../home/Images/plus.png" alt="sumar_article" @click="removerDelCarro(articulo, 'sumar')"></button>
-                </div>
-              </div>
-              <strong>{{totalPorArticulo(articulo)}}</strong>
-            </article>
+                <strong>{{totalPorArticulo(articulo)}}</strong>
+              </article>
+            </div>
           </div>
+        </template>
+        <template v-else>
+          <div class="flex justify-center align-center">
+          <strong>TODAVIA NO SE AÑADIO NADA AL CARRITO DE COMPRAS</strong>
+          </div>
+        </template>
+
+      </section >
+      
+
+      <section class=" flex flex-col w-2/5 h-screen bg-gray-300">
+        <div v-if="localStorageFiltrado.length > 0" >
+          <div class="w-full bg-orange-600  rounded-t-lg"></div>
+          <div class="flex gap-2 justify-center items-center m-2">
+            <strong class="text-xl">TOTAL A PAGAR:</strong>
+            <strong class="text-xl">{{totalCarrito}}</strong>
+          </div>
+          <button class="bg-verdeClaro text-black font-bold p-2 rounded-b-lg" @click="graciasPorSuCompra()">COMPRAR AHORA</button>
         </div>
-      </template>
-      <template v-else>
-        <div class="flex justify-center align-center">
-        <strong>TODAVIA NO SE AÑADIO NADA AL CARRITO DE COMPRAS</strong>
-        </div>
-      </template>
-      <div v-if="localStorageFiltrado.length > 0" class="flex flex-col gap-4 border-2 border-gray-400 rounded-xl w-[97%]">
-        <div class="w-full bg-orange-600 py-2 rounded-t-lg"></div>
-        <div class="flex gap-2 justify-center items-center m-2">
-          <strong class="text-xl">TOTAL A PAGAR:</strong>
-          <strong class="text-xl">{{totalCarrito}}</strong>
-        </div>
-        <button class="bg-verdeClaro text-black font-bold p-2 rounded-b-lg" @click="graciasPorSuCompra()">COMPRAR AHORA</button>
-      </div>
+
+      </section>
+      
+      
     </main>
     <footer class="bg-azulOscuro flex justify-between font-bold text-xl p-2 text-blanco">
       <h2>Cohort N°52</h2>
