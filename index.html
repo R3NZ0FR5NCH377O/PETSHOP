@@ -20,19 +20,19 @@
             </div>
             <nav class="text-white hidden relative text-center items-center md:flex  gap-2 lg:flex  gap-4 text-xl p-2 font-semibold " >
                 <a href="#" class="border-b-2" >Home</a>
-                <a href="#" class="hover:border-b-2">Contacto</a>
-                <a href="#" class="hover:border-b-2">Jugueteria</a>
-                <a href="#" class="hover:border-b-2">Farmacia</a>
-                <a href="#" class="h-8 items-center flex justify-center w-8 bg-black/20 p-2 rounded-[10rem] relative"> <img src="assets/Images/Cart.png" alt="" class="object-cover h-4 absolute top-50 rigth-50"></a>
+                <a href="./assets/contacto/contacto.html" class="hover:border-b-2">Contacto</a>
+                <a href="./assets/jugueteria/jugueteria.html" class="hover:border-b-2">Jugueteria</a>
+                <a href="./assets/farmacia/farmacia.html" class="hover:border-b-2">Farmacia</a>
+                <a href="./assets/carrito-compras/cart.html" class="h-8 items-center flex justify-center w-8 bg-black/20 p-2 rounded-[10rem] relative"> <img src="assets/Images/Cart.png" alt="" class="object-cover h-4 absolute top-50 rigth-50"></a>
             </nav>
         </header>
         <div v-if="modalHVisible" class="gradient w-[50%] h-[40%] z-10 bg-azulClaro fixed top-0 right-0 rounded-xl">
             <nav class="text-white text-lg flex flex-col text-center items-center gap-4 py-6" >
                 <a href="#" class="border-b-2" >Home</a>
-                <a href="#" class="">Contacto</a>
-                <a href="#" class="">Jugueteria</a>
-                <a href="#" class="">Farmacia</a>
-                <a href="#" class="h-10 w-10 items-center flex justify-center w-10 bg-black/20 p-2 rounded-[10rem] relative"> <img src="assets/Images/Cart.png" alt="" class="object-cover h-4 absolute top-50 rigth-50"></a>
+                <a href="./assets/contacto/contacto.html" class="">Contacto</a>
+                <a href="./assets/jugueteria/jugueteria.html" class="">Jugueteria</a>
+                <a href="./assets/farmacia/farmacia.html" class="">Farmacia</a>
+                <a href="./assets/carrito-compras/cart.html" class="h-10 w-10 items-center flex justify-center w-10 bg-black/20 p-2 rounded-[10rem] relative"> <img src="assets/Images/Cart.png" alt="" class="object-cover h-4 absolute top-50 rigth-50"></a>
             </nav>
             <img src="assets/Images/hambClose.png" alt="" class="w-6 absolute top-2 left-2" v-on:click="cerrarModalHamb()">
             

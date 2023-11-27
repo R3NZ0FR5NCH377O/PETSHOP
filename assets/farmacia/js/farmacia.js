@@ -16,6 +16,7 @@ const options = {
         precio: "", 
         disponibles: "", 
         imagen: "",
+        modalHVisible:false,
       },
       localStorage:[],
     }
@@ -49,6 +50,18 @@ const options = {
           this.sort = this.sort.filter(articulo => articulo.producto.toLowerCase().includes(this.filtroNombre.toLowerCase()));
         }
       }, // finaliza filtroprecio/categoria
+
+       //inicia menu hamburguesa
+       abrirModalHamb(){
+        this.modalHVisible=true;
+
+
+       },
+       cerrarModalHamb (){
+        this.modalHVisible=false;
+       },
+       //finaliza menu hamburguesa
+
     showModal(articulo){
       this.articulo = articulo
       this.modalVisible = true
